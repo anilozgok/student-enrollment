@@ -12,5 +12,9 @@ You can directly run the project using docker-compose
 docker compose up
 ```
 
+### Databae Diagram
+
+![db-diagram.png](img%2Fdb-diagram.png)
+
 ### Using project
 
