@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
-public class TestConfig {
+public class InitializeConfig {
     private final DatabaseService dbService;
 
     @Bean
