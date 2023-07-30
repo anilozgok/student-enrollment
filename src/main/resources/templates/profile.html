@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Complete Student Profile</title>
+</head>
+<body>
+<h1>Student Profile Form</h1>
+<form th:action="@{/api/student/profile}" method="post">
+    <label for="gender">Gender:</label>
+    <select name="gender" id="gender">
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+    </select><br/><br/>
+
+    <label for="nationality">Nationality:</label>
+    <input type="text" id="nationality" name="nationality" required/><br/><br/>
+
+    <label for="major">Major:</label>
+    <input type="text" id="major" name="major" required/><br/><br/>
+
+
+    <label for="yearOfAdmission">Year Of Admission:</label>
+    <input type="text" id="yearOfAdmission" name="yearOfAdmission"
+           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required/>
+    <br/><br/>
+
+    <input type="submit" value="Save Profile"/>
+</form>
+</body>
+</html>

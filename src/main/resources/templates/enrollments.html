@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enrollment List</title>
+    <style>
+        table {
+            border: 1px solid #b3adad;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        table th {
+            border: 1px solid #b3adad;
+            padding: 5px;
+            background: #f0f0f0;
+            color: #313030;
+        }
+
+        table td {
+            border: 1px solid #b3adad;
+            text-align: center;
+            padding: 5px;
+            background: #ffffff;
+            color: #313030;
+        }
+    </style>
+</head>
+<body>
+<h1>Enrollment List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Enrollment Id</th>
+        <th>Student First Name</th>
+        <th>Student Last Name</th>
+        <th>Course Name</th>
+        <th>Course Code</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="enrollment : ${enrollments}">
+        <td th:text="${enrollment.id()}"></td>
+        <td th:text="${enrollment.student().firstName()}"></td>
+        <td th:text="${enrollment.student().lastName()}"></td>
+        <td th:text="${enrollment.course().name()}"></td>
+        <td th:text="${enrollment.course().code()}"></td>
+        <td>
+            <form th:action="@{/api/enrollment/delete/{id}(id=${enrollment.id()})}" method="post">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+
+<form th:action="@{/api/enrollment/enroll}" method="get">
+    <input type="submit" value="Enroll Student"/>
+</form>
+
+</body>
+</html>

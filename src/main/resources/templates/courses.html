@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Course List</title>
+    <style>
+        table {
+            border: 1px solid #b3adad;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        table th {
+            border: 1px solid #b3adad;
+            padding: 5px;
+            background: #f0f0f0;
+            color: #313030;
+        }
+
+        table td {
+            border: 1px solid #b3adad;
+            text-align: center;
+            padding: 5px;
+            background: #ffffff;
+            color: #313030;
+        }
+    </style>
+</head>
+<body>
+<h1>Course List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Credit</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="course : ${courses}">
+        <td th:text="${course.id()}"></td>
+        <td th:text="${course.name()}"></td>
+        <td th:text="${course.code()}"></td>
+        <td th:text="${course.credit()}"></td>
+        <td>
+            <form th:action="@{/api/course/update}" method="get">
+                <input type="submit" value="Update"/>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/api/course/delete/{id}(id=${course.id()})}" method="post">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+
+
+<form th:action="@{/api/course/save}" , method="get">
+    <input type="submit" value="Add Course"/>
+</form>
+
+<br/>
+
+<form th:action="@{/api/student/list}" method="get">
+    <input type="submit" value="Student List"/>
+</form>
+
+<br/>
+
+<form th:action="@{/api/enrollment/list}" method="get">
+    <input type="submit" value="Enrollment List"/>
+</form>
+
+<br/>
+
+<form th:action="@{/api/enrollment/enroll}" method="get">
+    <input type="submit" value="Enroll Student"/>
+</form>
+
+<br/>
+
+<form th:action="@{/api/course/by-code}" , method="get">
+    <input type="text" name="code" th:value="${code}" placeholder="Search course by code..." size="30">
+
+    <input type="submit" value="Search"/>
+</form>
+
+
+</body>
+</html>

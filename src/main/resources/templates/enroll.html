@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enrollment Page</title>
+</head>
+<body>
+<h1>Enroll Student</h1>
+<form th:action="@{/api/enrollment/enroll}" method="post">
+
+    <label for="studentId">StudentId:</label>
+    <input type="text" id="studentId" name="studentId" required/><br/><br/>
+
+    <label for="courseId">CourseId:</label>
+    <input type="text" id="courseId" name="courseId" required/><br/><br/>
+
+    <input type="submit" value="Enroll"/>
+</form>
+</body>
+</html>
